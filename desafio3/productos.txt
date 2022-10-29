@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Remera",
+    "price": 300,
+    "thumbnail": "https://www.google.com/url?sa=i&url=https%3A%2F%2Farticulo.mercadolibre.com.ar%2FMLA-694606834-remera-pokemon-pikachu-angry-big-face-original-importada-_JM&psig=AOvVaw1HkbgH3IbCypJN3ByCqWZl&ust=1666293920044000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKDz4OOC7foCFQAAAAAdAAAAABAP",
+    "id": 1
+  },
+  {
+    "title": "Pantalon",
+    "price": 500,
+    "thumbnail": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2F-%2Fes%2FPok%25C3%25A9mon-Pikachu-Squirtle-Jigglypuff-Tie%2Fdp%2FB08XWSTNVC&psig=AOvVaw3_H7ko_K4UkjxoD8AwQsCF&ust=1666295254952000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCLDCqNmH7foCFQAAAAAdAAAAABAD",
+    "id": 2
+  },
+  {
+    "title": "medias",
+    "price": 400,
+    "thumbnail": "https://d3ugyf2ht6aenh.cloudfront.net/stores/110/201/products/soquetes-pikachu11-4bb7e1060d10e3e2a316116987765766-1024-1024.jpg",
+    "id": 3
+  },
+  {
+    "title": "calzoncillo",
+    "price": 350,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/71DjbkoOGCL._AC_UL210_SR210,210_.jpg",
+    "id": 4
+  },
+  {
+    "title": "campera",
+    "price": 800,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_608907-MLA51232574547_082022-W.jpg",
+    "id": 5
+  }
+]
