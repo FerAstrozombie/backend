@@ -39,7 +39,6 @@ routerProductos.get("/productos",(req, res) =>{
 
 routerProductos.get("/productos/:id",(req, res) =>{
     const  id = (req.params.id)
-    console.log(id);
     const producto = contenedorProductos.getById(parseInt(id));
     if(isNaN(id)){
         res.json({
@@ -78,38 +77,20 @@ routerProductos.delete("/productos/:id",(req, res) =>{
 })
 
 routerProductos.put("/productos/:id",(req, res) =>{
-    const  id = (req.params.id);
-    const {title, price, thumbnail} = req.body;
-    const producto = contenedorProductos.getById(parseInt(id));
-    if (producto) {
-        productos.forEach((producto, i) => {
-            if(producto.id === id){
-                producto.title = title;
-                producto.price = price;
-                producto.thumbnail = thumbnail;
-            }
-        });
+    let  id = parseInt((req.params.id));
+    let {title, price, thumbnail,} = req.body;
+    if(title && price && thumbnail){
+        contenedorProductos.deleteById(id);
+        let producto = ({title, price, thumbnail, id})
+        productos.push(producto);
         res.json({
-            producto
+            msg: "Se actualizo el producto"
         })
     }else{
-        res.status(500).json({
-            error: "Hubo un error inesperado"
+        res.json({
+            msg: "Por favor ingresa todos los campos: 'title, price, thumbnail'"
         })
     }
-
-    /* let producto = contenedorProductos.getById(parseInt(id));
-    console.log(producto);
-    producto = req.body;
-    if(producto.id === id){
-        res.json({
-            producto
-        })
-    }else{
-        res.status(500).json({
-            error: "No se encontro el producto"
-        })
-    } */
 })
 
 app.use('/api', routerProductos);
