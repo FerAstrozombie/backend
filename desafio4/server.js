@@ -79,16 +79,23 @@ routerProductos.delete("/productos/:id",(req, res) =>{
 routerProductos.put("/productos/:id",(req, res) =>{
     let  id = parseInt((req.params.id));
     let {title, price, thumbnail,} = req.body;
-    if(title && price && thumbnail){
-        contenedorProductos.deleteById(id);
-        let producto = ({title, price, thumbnail, id})
-        productos.push(producto);
-        res.json({
-            msg: "Se actualizo el producto"
-        })
+    if(id <= productos.length){
+        if(title && price && thumbnail){
+            let index = productos.findIndex(producto => producto.id === id )
+            contenedorProductos.deleteById(id);
+            let producto = ({title, price, thumbnail, id})
+            productos.splice(index, 0, producto)
+            res.json({
+                msg: "Se actualizo el producto"
+            })
+        }else{
+            res.json({
+                msg: "Por favor ingresa todos los campos: 'title, price, thumbnail'"
+            })
+        }
     }else{
         res.json({
-            msg: "Por favor ingresa todos los campos: 'title, price, thumbnail'"
+            msg: "El id no es correcto"
         })
     }
 })
