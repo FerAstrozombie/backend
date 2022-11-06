@@ -1,0 +1,33 @@
+{{#if compare}}
+    <div class="padre">
+        <h2>Productos cargados</h2>
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <th>Nombre</strong></th>
+                        <th>Precio</strong></th>
+                        <th>Foto</strong></th>
+                    </tr>
+                    {{#each products}}
+                        <tr>
+                        <th>{{this.title}}</th>
+                        <th>{{this.price}}</th>
+                        <th>
+                            <img src="{{this.url}}" alt="{{this.title}}">
+                        </th>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        <a class="boton" href="/productos">
+            <button>Seguir cargando</button>
+        </a>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay productos</h2>
+        <a class="boton" href="/productos">
+            <button>Seguir cargando</button>
+        </a>        
+    </div>
+{{/if}}
