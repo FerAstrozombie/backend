@@ -1,0 +1,44 @@
+body{
+    font-family: Space mono;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+img {
+    width: 150px;
+}
+button{
+    font-family: Space mono;
+    width: 150px;
+    height: 30px;
+    background-color: #1cb3e6;
+    border: none;
+    border-radius: 20px;
+}
+button:hover{
+    transform: scale(1.1);
+    transition: ease;
+    cursor: pointer;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 20px;
+}
+table{
+    border-radius: 20px;
+}
+.noHay{
+    margin-top: 30px;
+}
+.padre{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.boton{
+    margin-top: 30px;
+}

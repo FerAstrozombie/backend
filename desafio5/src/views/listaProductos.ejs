@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/listaProductos.css">
+    <title>Lista de productos</title>
+</head>
+<body>
+    <header>
+        <%- include ("./partials/navBar.ejs") %>
+    </header>
+    <div class="padre">
+        <%if (products.length > 0) { %>
+            <h2>Productos cargados</h2>
+            <div class="tabla">
+                <%- include ("./partials/tabla.ejs", { productos:products }) %> 
+            </div>
+        <% } else { %>
+            <h2 class="noHay">No hay productos</h2>
+        <% } %>
+        <a class="boton" href="/productos">
+            <button>Seguir cargando</button>
+        </a>
+    </div>
+
+    <%- include ("./partials/footer.ejs") %>
+
+</body>
+</html>
