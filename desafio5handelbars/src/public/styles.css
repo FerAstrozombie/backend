@@ -94,6 +94,7 @@ table{
 }
 .noHay{
     margin-top: 30px;
+    text-align: center;
 }
 .boton{
     margin-top: 30px;
@@ -130,4 +131,28 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#chatForm{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+.chat{
+    display: flex;
+    flex-direction: row;
+}
+#botonChat{
+    font-family: Space mono;
+    width: 50px;
+    height: 50px;
+    background-color: #1cb3e6;
+    border: none;
+    border-radius: 50px;
+}
+.chatBurbuja{
+    border: 1px solid #1cb3e6;
+    border-radius: 30px;
+    padding: 0px 10px 0px 10px;
+    margin-top: 10px;
 }

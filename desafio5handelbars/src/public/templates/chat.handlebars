@@ -1,0 +1,14 @@
+{{#if mensajesChat}}
+    <div class="padre">
+        <h2>Centro de mensajes</h2>
+        {{#each mensajesChat}}
+            <div class="chat">
+                <div class="chatBurbuja">
+                    <p>{{this.autor}} : {{this.hora}} : {{this.mensaje}}</p> 
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{else}}
+    <h2 class="noHay"> No hay chats</h2>
+{{/if}}

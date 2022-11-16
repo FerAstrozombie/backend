@@ -1,8 +1,0 @@
-[
-  {
-    "title": "short",
-    "price": "122323",
-    "url": "https://m.media-amazon.com/images/I/711dMJN90sL._AC_UY1000_.jpg",
-    "id": 1
-  }
-]

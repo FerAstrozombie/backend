@@ -1,5 +1,4 @@
 const fs = require("fs");
-const { title } = require("process");
 
 class Contenedor {
     constructor(name) {

@@ -1,11 +1,13 @@
 const express = require("express");
 const { Router } = require("express");
 const  Contenedor = require("./products");
+const Chat = require("./chat");
 const app = express();
 const PORT = 8080;
 const { Server } = require("socket.io");
 const path = require('path')
 const productServices = new Contenedor("productos.txt");
+const chatServices = new Chat("chats.txt")
 const routerProductos = Router();
 const server = app.listen( PORT, ()=>{console.log(`Server listening on port: ${PORT}`);})
 const io = new Server(server);
@@ -24,13 +26,17 @@ app.set("view engine","handlebars");
 io.on("connection", async (socket) => {
     console.log("Nuevo cliente conectado");
     socket.emit("products", await productServices.getAll());
+    socket.emit("mensajesChat", await chatServices.getAll());
     socket.on("newProduct", async(data) => {
-        await productServices.save(data);
-        
-        socket.emit("products", await productServices.getAll());
+        await productServices.save(data);        
+        io.sockets.emit("products", await productServices.getAll());
+    })
+    socket.on("nuevoMensaje", async (data) => {        
+        await chatServices.save(data);
+        io.sockets.emit("mensajesChat", await chatServices.getAll());
+
     })
 });
-
 
 routerProductos.get("/productos",async(req, res) =>{
     const productosObtenidos = await productServices.getAll();

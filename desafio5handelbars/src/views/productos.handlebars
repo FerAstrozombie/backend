@@ -3,15 +3,26 @@
         <fieldset>
             <div  class="flexForm">                
                 <img src="/dibujo.svg" alt="">
-                <form action="/api/productos/" method="POST">
-                    <input type="text" name="title" placeholder="Title" required />
-                    <input type="number" name="price" placeholder="Price" required />
-                    <input type="url" name="url" placeholder="Thumbnail" required />
-                    <button>Enviar</button>
+                <form id="productForm">
+                    <input id="title" type="text" name="title" placeholder="Title"  required />
+                    <input id="price" type="number" name="price" placeholder="Price" required />
+                    <input id="url" type="url" name="url" placeholder="Thumbnail" required />
+                    <button type="submit">Enviar</button>
                 </form>  
             </div>              
         </fieldset>
         <a class="boton" href="/listadeproductos">
             <button>Ir a productos</button>
         </a>
-    </div>
+</div>
+<div id="productsContainer"></div>
+
+<form id="chatForm">
+    <input type="text" id="mensajeChat" placeholder="Ingrese mensaje" required />
+    <button id="botonChat" type="submit">&rarr;</button>
+</form>
+<div id="chatContainer"></div>
+
+{{> importsScripts }}
+<script src="socket.io/socket.io.js"></script>
+<script src="main.js"></script>
