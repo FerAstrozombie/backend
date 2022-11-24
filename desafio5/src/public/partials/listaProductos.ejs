@@ -12,10 +12,10 @@
         <%- include ("./partials/navBar.ejs") %>
     </header>
     <div class="padre">
-        <%if (products.length > 0) { %>
+        <%if (productos.length > 0) { %>
             <h2>Productos cargados</h2>
             <div class="tabla">
-                <%- include ("./partials/tabla.ejs", { productos:products }) %> 
+                <%- include ("./partials/tabla.ejs", { productos:productos }) %> 
             </div>
         <% } else { %>
             <h2 class="noHay">No hay productos</h2>

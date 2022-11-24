@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "gorra bullbasur",
+    "descripcion": "bermuda",
+    "codigo": 23459,
+    "url": "https://d3ugyf2ht6aenh.cloudfront.net/stores/806/999/products/de2a26021-09df2b5d355ea63aff16138279852370-640-0.jpg",
+    "precio": 3000,
+    "stock": 250,
+    "id": 1,
+    "timestamp": "23/11/2022, 18:23:28"
+  },
+  {
+    "nombre": "gorra bullbasur",
+    "descripcion": "bermuda",
+    "codigo": 23459,
+    "url": "https://d3ugyf2ht6aenh.cloudfront.net/stores/806/999/products/de2a26021-09df2b5d355ea63aff16138279852370-640-0.jpg",
+    "precio": 3000,
+    "stock": 250,
+    "id": 2,
+    "timestamp": "23/11/2022, 18:23:35"
+  },
+  {
+    "nombre": "gorra bullbasur",
+    "descripcion": "bermuda",
+    "codigo": 23459,
+    "url": "https://d3ugyf2ht6aenh.cloudfront.net/stores/806/999/products/de2a26021-09df2b5d355ea63aff16138279852370-640-0.jpg",
+    "precio": 3000,
+    "stock": 250,
+    "id": 3,
+    "timestamp": "23/11/2022, 18:23:36"
+  },
+  {
+    "nombre": "gorra bullbasur",
+    "descripcion": "bermuda",
+    "codigo": 23459,
+    "url": "https://d3ugyf2ht6aenh.cloudfront.net/stores/806/999/products/de2a26021-09df2b5d355ea63aff16138279852370-640-0.jpg",
+    "precio": 3000,
+    "stock": 250,
+    "id": 4,
+    "timestamp": "23/11/2022, 18:23:36"
+  }
+]

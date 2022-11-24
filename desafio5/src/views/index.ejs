@@ -16,27 +16,22 @@
         <fieldset>
             <div  class="flexForm">                
                 <img src="/dibujo.svg" alt="">
-                <form action="/api/productos/" method="POST">
-                    <input type="text" name="title" placeholder="Title" />
-                    <input type="number" name="price" placeholder="Price" />
-                    <input type="url" name="url" placeholder="Thumbnail" />
-                    <button>Enviar</button>
+                <form id="productForm">
+                    <input type="text" name="title" placeholder="Title" id="title" required />
+                    <input type="number" name="price" placeholder="Price" id="price" required />
+                    <input type="url" name="url" placeholder="Thumbnail" id="url" required />
+                    <button type="submit">Enviar</button>
                 </form>  
             </div>              
         </fieldset>
-        <%if (products.length > 0) { %>
-            <h2>Productos cargados</h2>
-            <div class="tabla">
-                <%- include ("./partials/tabla.ejs", { productos:products }) %> 
-            </div>
-        <% } else { %>
-            <h2 class="noHay">No hay productos</h2>
-        <% } %>
-
+        <div id="tableContainer"></div>
         <a class="boton" href="/listadeproductos">
             <button>Ir a productos</button>
         </a>
     </div>
     <%- include ("./partials/footer.ejs") %>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>
