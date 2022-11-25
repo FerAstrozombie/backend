@@ -110,32 +110,49 @@ routerCarrito.delete("/carritos/:id",async(req, res) =>{
 routerCarrito.get("/:id/productos",async(req, res) =>{
     const  id = (req.params.id)
     const carrito = await carritoServices.getById(parseInt(id));
-    let productosDelCarrito = carrito.productos;
-    if(productosDelCarrito === undefined){
+    let productos = carrito.productos;
+    console.log(productos);
+    if(productos === undefined){
         res.json({
             error: "No hay productos en el carrito"
         });
     }else{
         res.json({
-            productosDelCarrito
+            productos
         })
     }
 });
 
 routerCarrito.post("/:id/productos", async(req, res) => {   
     const  idCarrito = parseInt((req.params.id));
-    let carrito = await carritoServices.getById(idCarrito)
+    let carritos = await carritoServices.getAll();
+    let carrito = await carritoServices.getById(idCarrito);
     let idProducto = parseInt(req.body.id);
     let producto = await productServices.getById(idProducto);
+    let productosTotales = await productServices.getAll();
     let today = new Date();
     let now = today.toLocaleString();
     let timestamp = now
-    await carrito.productos.push(producto)
-    let productos = carrito.productos
-    await carritoServices.updateById(idCarrito, timestamp, productos)
-    res.json({
-        msg: "Se agrego el producto al carrito"
-    })
+    if(isNaN(idProducto)){
+        res.json({
+            error: "El parametro no es un numero"
+        });
+    }else if(idProducto > productosTotales.length ){
+        res.json({
+            erorr: `El producto con el id:${idProducto} no existe`
+        })
+    }else if(idCarrito > carritos.length){
+        res.json({
+            error: `El carrito con el id:${idCarrito} no existe`
+        })
+    }else{
+        await carrito.productos.push(producto)
+        let productos = carrito.productos
+        await carritoServices.updateById(idCarrito, timestamp, productos)
+        res.json({
+            msg: "Se agrego el producto al carrito"
+        })
+    }
 });
 
 routerCarrito.delete("/:id/carritos/:id_prod",async(req, res) =>{
@@ -146,19 +163,25 @@ routerCarrito.delete("/:id/carritos/:id_prod",async(req, res) =>{
     let now = today.toLocaleString();
     let timestamp = now    
     let productos = carrito.productos
-    if(idCarrito > carrito.length){
+
+    if(productos === undefined){
         res.json({
             msg: "No se encontro el carrito.",
         })
     }else{
-        /* let eliminado = carrito.productos.filter(elem => elem.id ===idProducto);
-        console.log(eliminado); */
         const index = productos.findIndex(elem => elem.id === idProducto);
-        let eliminado = productos.splice(index,1);        
-        carritoServices.updateById(idCarrito,timestamp, productos)
-        res.json({
-            msg: `Se elimino del carrito con el id:${idCarrito} el producto con el id:${idProducto}`,
-        })
+        
+        if(index === -1){
+            res.json({
+                erorr: "Producto no encontrado en el carrito"
+            })
+        }else{
+            let eliminado = productos.splice(index,1);        
+            carritoServices.updateById(idCarrito,timestamp, productos)
+            res.json({
+                msg: `Se elimino del carrito con el id:${idCarrito} el producto con el id:${idProducto}`,
+            })
+        }
     }
 });
 
