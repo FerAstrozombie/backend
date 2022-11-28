@@ -109,7 +109,9 @@ routerProductos.put("/productos/:id",async(req, res) =>{
     
 })
 
-
+app.get("/", async (req,res) =>{
+    res.render("home");
+})
 app.get("/productos", async(req, res) => {
     const productos = await productosApi.getAll()
     res.render("productos",{
@@ -121,7 +123,7 @@ app.get("/listadeproductos", async(req, res) => {
     const productos = await productosApi.getAll()
     res.render("listadeproductos",{
         productos: productos,
-        compare: productos.length > 0
+        compare: productos.length > 0,
     })
 })
 
