@@ -1,22 +1,27 @@
-const express = require("express");
-const { Router } = require("express");
-const  Contenedor = require("./products");
-const Carrito = require("./carrito");
+import express  from "express";
+import { Router } from "express";
+import { Contenedor } from "./products.js";
+import { Carrito } from "./carrito.js";
+import { ContenedorProductosMongoDB } from "./managers/ContenedorMongoDB.js";
+import { options } from "./config/databaseConfig.js"
+import mongoose from "mongoose";
 const app = express();
 const PORT = 8080;
 const productServices = new Contenedor("productos.txt");
 const carritoServices = new Carrito("carritos.txt");
+const productosMongoService = new ContenedorProductosMongoDB("ecommerce")
 const routerProductos = Router();
 const routerCarrito = Router();
 const server = app.listen( PORT, ()=>{console.log(`Server listening on port: ${PORT}`);})
 
+mongoose.connect("mongodb+srv://ferastrozombie:flemita666@ecommerce.amqtcgi.mongodb.net/ecommerce?retryWrites=true&w=majority",{useNewUrlParser: true});
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 let administrador = true;
 
 routerProductos.get("/productos",async(req, res) =>{
-    const productosObtenidos = await productServices.getAll();
+    const productosObtenidos = await productosMongoService.getAll();
     if(productosObtenidos){
         res.json({
             productosObtenidos,
@@ -30,35 +35,27 @@ routerProductos.get("/productos",async(req, res) =>{
 
 routerProductos.get("/productos/:id",async(req, res) =>{
     const  id = (req.params.id)
-    const producto = await productServices.getById(parseInt(id));
-    if(isNaN(id)){
-        res.json({
-            error: "El parametro no es un numero"
-        });
-    }else{
+    const producto = await productosMongoService.getById(id);
+    console.log(id);    
         res.json({
             producto
         })
-    }
 });
 
 if(administrador){
 
     routerProductos.post("/productos", async(req, res) => {        
         let newProduct = req.body;
-        await productServices.save(newProduct)
+        await productosMongoService.save(newProduct)
         res.json({
             msg: "Se agrego el producto"
         })
     });
 
     routerProductos.put("/productos/:id",async(req, res) =>{
-        let today = new Date();
-        let now = today.toLocaleString();
-        let  id = parseInt((req.params.id));
-        let timestamp = now
-        let {nombre, descripcion, codigo, url, precio, stock} = req.body;
-        await productServices.updateById(id, nombre, descripcion, codigo, url, precio, stock, timestamp)
+        let  id = (req.params.id);
+        let {nombre, descripcion, url, precio, stock} = req.body;
+        await productosMongoService.updateById(id, nombre, descripcion, url, precio, stock)
         res.json({
             msg: `Se modifico el producto con el id: ${id}`
         })
@@ -66,14 +63,14 @@ if(administrador){
     });
     
     routerProductos.delete("/productos/:id",async(req, res) =>{
-        const  id = parseInt((req.params.id))
-        const productos = await productServices.getAll();
+        const  id = (req.params.id)
+        const productos = await productosMongoService.getAll();
         if(id > productos.length){
             res.json({
                 msg: "No se puede elimar el producto.",
             })
         }else{
-            await productServices.deleteById(id);
+            await productosMongoService.deleteById(id);
             res.json({
                 msg: `Se elimino el producto con el id ${id}`,
             })
@@ -109,9 +106,15 @@ routerCarrito.delete("/carritos/:id",async(req, res) =>{
 
 routerCarrito.get("/:id/productos",async(req, res) =>{
     const  id = (req.params.id)
+    const carritos = await carritoServices.getAll();
     const carrito = await carritoServices.getById(parseInt(id));
     let productos = carrito.productos;
     console.log(productos);
+    if(id > carritos.length){
+        res.json({
+            error: "No hay carrito con ese Id"
+        });
+    }
     if(productos === undefined){
         res.json({
             error: "No hay productos en el carrito"

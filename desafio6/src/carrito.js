@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 let today = new Date();
 let now = today.toLocaleString();
@@ -99,4 +99,4 @@ class Carrito {
 
 }
 
-module.exports = Carrito
+export  { Carrito };
