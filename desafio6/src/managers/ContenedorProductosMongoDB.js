@@ -1,9 +1,9 @@
-import mongoose, { mongo, Mongoose } from 'mongoose';
+import mongoose from "mongoose";
 import { ProductModel } from "../models/productos.js";
 
 class ContenedorProductosMongoDB {
-    constructor(coleccion){
-        this.database = mongoose;
+    constructor(opciones, coleccion){
+        this.database = mongoose.connect("mongodb+srv://ferastrozombie:flemita666@ecommerce.amqtcgi.mongodb.net/ecommerce?retryWrites=true&w=majority", opciones);
         this.colection = coleccion;
     }
 
@@ -18,17 +18,17 @@ class ContenedorProductosMongoDB {
     }
 
     async getById(id){
-        let productoBuscado = await ProductModel.find({id:id});
+        let productoBuscado = await ProductModel.find({_id:id});
         return productoBuscado;
     }
 
     async updateById(id, nombre, descripcion, url, precio, stock){
-        let prouctoActualizado = await ProductModel.updateOne({id:id},{$set:{nombre: nombre, descripcion: descripcion, url: url, precio: precio, stock: stock}});
+        let prouctoActualizado = await ProductModel.updateOne({_id:id},{$set:{nombre: nombre, descripcion: descripcion, url: url, precio: precio, stock: stock}});
         return prouctoActualizado;
     }
 
     async deleteById(id){
-        await ProductModel.deleteOne({id:id});
+        await ProductModel.deleteOne({_id:id});
     }
 }
 
