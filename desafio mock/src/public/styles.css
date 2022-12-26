@@ -1,0 +1,205 @@
+body{
+    font-family: Space mono;
+    padding: 0;
+    margin: 0;
+    margin-top: 0;
+}
+.lista{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #1cb3e6;
+    margin: 0;
+    height: 70px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+li{
+    margin-right: 40px;
+}
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+fieldset{
+    width: 300px;
+    height: 380px;
+    border-radius: 20px;
+    -webkit-box-shadow: 17px 11px 5px 0px rgba(0,0,0,0.37);
+    -moz-box-shadow: 17px 11px 5px 0px rgba(0,0,0,0.37);
+    box-shadow: 17px 11px 5px 0px rgba(0,0,0,0.37);
+}
+.flexForm{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.padre{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    width: 150px;
+}
+input{
+    font-family: Space mono;
+    margin: 20px;
+    border: none;
+    border-bottom: 1px solid #1cb3e6;
+    outline: none;
+}
+input[type="number"]
+{
+    appearance: textfield ;
+    margin: 0;
+    -moz-appearance:textfield ;
+}
+button{
+    font-family: Space mono;
+    width: 150px;
+    height: 30px;
+    background-color: #1cb3e6;
+    border: none;
+    border-radius: 20px;
+}
+button:hover{
+    transform: scale(1.1);
+    transition: ease;
+    cursor: pointer;
+}
+.tabla{
+    margin-top: 15px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 20px;
+}
+table{
+    border-radius: 20px;
+}
+.noHay{
+    margin-top: 30px;
+    text-align: center;
+}
+.boton{
+    margin-top: 30px;
+}
+copyrigth{
+    font-weight: bold;
+    
+}
+footer{
+    margin-top: 30px;
+    width: 100%;
+    background-color: #1cb3e6;
+}
+.tamañoLogo {
+    width: 30px;
+    margin: 10px;
+}
+.tamañoLogo:hover{
+    transform: scale(1.2);
+    transition: 1.3s;
+}
+.flexParrafo{
+    display: flex;
+    flex-direction: row;
+}
+.flexPadre {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.ordenBotones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#chatForm{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+.chat{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#botonChat{
+    font-family: Space mono;
+    width: 50px;
+    height: 50px;
+    background-color: #1cb3e6;
+    border: none;
+    border-radius: 50px;
+}
+.chatBurbuja{
+    border: 1px solid #1cb3e6;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tituloTabla{
+    background-color: rgb(200, 200, 200);
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorFormulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputUsuario{
+    font-family: Space mono;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+#edad{
+    margin: 10px;
+}
+
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 70%;
+    margin-left: 10px;
+}
+
+.burbuja{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3, p {
+    text-align: center;
+}

@@ -1,0 +1,35 @@
+<div class="padre">
+        <h2>Ingrese Producto</h2>
+        <fieldset>
+            <div  class="flexForm">                
+                <img src="/dibujo.svg" alt="">
+                <form id="productForm">
+                    <input id="title" type="text" name="title" placeholder="Title"  required />
+                    <input id="price" type="number" name="price" placeholder="Price" required />
+                    <input id="url" type="url" name="url" placeholder="Thumbnail" required />
+                    <button type="submit">Enviar</button>
+                </form>  
+            </div>              
+        </fieldset>
+        <a class="boton" href="/listadeproductos">
+            <button>Ir a productos</button>
+        </a>
+</div>
+<div id="productsContainer"></div>
+
+<form id="chatForm">
+    <input class="inputUsuario" type="email" id="email" placeholder="Ingrese un email" required>
+    <input class="inputUsuario" type="text" id="nombre" placeholder="Ingrese un nombre" required>
+    <input class="inputUsuario" type="text" id="apellido" placeholder="Ingrese un apellido" required>
+    <input class="inputUsuario" type="number" id="edad" placeholder="Ingrese una edad" required>
+    <input class="inputUsuario" type="text" id="alias" placeholder="Ingrese un alias" required>
+    <input class="inputUsuario" type="text" id="avatar" placeholder="Ingrese un avatar" required>
+    <input type="text" id="mensajeChat" placeholder="Ingrese mensaje" required />
+    <button id="botonChat" type="submit">&rarr;</button>
+</form>
+
+<div id="chatContainer"></div>
+
+{{> importsScripts }}
+<script src="socket.io/socket.io.js"></script>
+<script src="main.js"></script>
