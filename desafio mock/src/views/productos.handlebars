@@ -1,19 +1,23 @@
 <div class="padre">
-        <h2>Ingrese Producto</h2>
-        <fieldset>
-            <div  class="flexForm">                
-                <img src="/dibujo.svg" alt="">
-                <form id="productForm">
-                    <input id="title" type="text" name="title" placeholder="Title"  required />
-                    <input id="price" type="number" name="price" placeholder="Price" required />
-                    <input id="url" type="url" name="url" placeholder="Thumbnail" required />
-                    <button type="submit">Enviar</button>
-                </form>  
-            </div>              
-        </fieldset>
-        <a class="boton" href="/listadeproductos">
-            <button>Ir a productos</button>
-        </a>
+    <div class="logueo">
+        <h2>Bienvenido, {{name}}</h2>
+        <button onclick="location.href='/logout'" class="botonLogueo">Cerrar sesion</button>
+    </div>
+    <h2>Ingrese Producto</h2>
+    <fieldset>
+        <div  class="flexForm">                
+            <img src="/dibujo.svg" alt="">
+            <form id="productForm">
+                <input id="title" type="text" name="title" placeholder="Title"  required />
+                <input id="price" type="number" name="price" placeholder="Price" required />
+                <input id="url" type="url" name="url" placeholder="Thumbnail" required />
+                <button type="submit">Enviar</button>
+            </form>  
+        </div>              
+    </fieldset>
+    <a class="boton" href="/listadeproductos">
+        <button>Ir a productos</button>
+    </a>
 </div>
 <div id="productsContainer"></div>
 

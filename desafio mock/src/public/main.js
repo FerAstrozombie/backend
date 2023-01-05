@@ -84,7 +84,7 @@ socketClient.on("mensajesChat", async (data) => {
                                 <p> (Porcentaje de compresion: ${porcentaje}%) </p>
                                 ${dataNueva.mensajes.length >0 ? mensajesElemento: ""}
                                 ` 
-})
+});
 
 
 

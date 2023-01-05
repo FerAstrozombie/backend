@@ -19,6 +19,11 @@ const io = new Server(server);
 const handlebars = require("express-handlebars");
 const viewsFolder = path.join(__dirname,"views")
 const { normalize, schema} = require("normalizr");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const fileStrategy = require("session-file-store");
+const MongoStore = require("connect-mongo");
+const authRouter = require("./web/authRouter.js")
 
 app.use(express.static(__dirname+"/public"));
 app.use(express.urlencoded({extended: true}));
@@ -28,6 +33,18 @@ app.engine("handlebars",handlebars.engine());
 app.set("views", viewsFolder);
 app.set("view engine","handlebars");
 
+app.use(cookieParser());
+
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: options.mongoAtlasSessions.urlDatabase
+    }),
+    secret: "claveSecreta",
+    resave:false,
+    saveUninitialized:false,
+}));
+
+app.use(authRouter);
 
 //Defino los schemas de los mensajes
 const authorSchema = new schema.Entity("author",{})
@@ -66,7 +83,6 @@ io.on("connection", async (socket) => {
     socket.on("nuevoMensaje", async (data) => {        
         await chatApi.save(data);
         io.sockets.emit("mensajesChat", await normalizarMensajes());
-
     })
 });
 
@@ -138,21 +154,34 @@ routerProductos.put("/productos/:id",async(req, res) =>{
 })
 
 app.get("/", async (req,res) =>{
-    res.render("home");
+    if(req.session.username){
+        res.render("home");
+    }else{
+        res.redirect("/login");
+    }
 })
 app.get("/productos", async(req, res) => {
-    const productos = await productosApi.getAll()
-    res.render("productos",{
-        productos : productos,
-    })
-})
+    if(req.session.username){
+        const productos = await productosApi.getAll()
+        res.render("productos",{
+            productos : productos,
+            name: req.session.username
+        })
+    }else {
+        res.redirect("/login");
+    };
+});
 
 app.get("/listadeproductos", async(req, res) => {
-    const productos = await productosApi.getAll()
-    res.render("listadeproductos",{
-        productos: productos,
-        compare: productos.length > 0,
-    })
+    if(req.session.username){
+        const productos = await productosApi.getAll()
+        res.render("listadeproductos",{
+            productos: productos,
+            compare: productos.length > 0,
+        })
+    }else{
+        res.redirect("/login");
+    };
 })
 
 app.get("/productos-test", async(req, res) => {

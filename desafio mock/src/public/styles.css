@@ -203,3 +203,22 @@ footer{
 h3, p {
     text-align: center;
 }
+
+.centradoLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logueo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.botonLogueo{
+    margin-left: 30px;
+}
