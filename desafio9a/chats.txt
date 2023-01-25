@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "author": {
+      "id": "fernando_punk77@hotmail.com",
+      "nombre": "fer",
+      "apellido": "lair",
+      "edad": "33",
+      "alias": "FerAstrozombie",
+      "avatar": "https://media.revistagq.com/photos/5f10224264f52a842c7f9e8b/master/pass/apps.39852.14455250034361967.824623c3-91b6-402f-9a68-c66bfac9bc20.jpg"
+    },
+    "text": "buenas tardes",
+    "hora": "26/12/2022, 17:26:36"
+  },
+  {
+    "id": 2,
+    "author": {
+      "id": "maria@gmail.com",
+      "nombre": "maria",
+      "apellido": "perez",
+      "edad": "22",
+      "alias": "maria",
+      "avatar": "https://i.pinimg.com/736x/34/26/49/342649651ff0985eb72071d26d34a261.jpg"
+    },
+    "text": "hola fer",
+    "hora": "26/12/2022, 17:27:31"
+  },
+  {
+    "id": 3,
+    "author": {
+      "id": "fernando_punk77@hotmail.com",
+      "nombre": "fer",
+      "apellido": "lair",
+      "edad": "33",
+      "alias": "FerAstrozombie",
+      "avatar": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+    },
+    "text": "adios",
+    "hora": "26/12/2022, 17:38:32"
+  },
+  {
+    "id": 4,
+    "author": {
+      "id": "fernando_punk77@hotmail.com",
+      "nombre": "fer",
+      "apellido": "lair",
+      "edad": "33",
+      "alias": "FerAstrozombie",
+      "avatar": "https://media.revistagq.com/photos/5f10224264f52a842c7f9e8b/master/pass/apps.39852.14455250034361967.824623c3-91b6-402f-9a68-c66bfac9bc20.jpg"
+    },
+    "text": "como estas?",
+    "hora": "26/12/2022, 17:39:10"
+  },
+  {
+    "id": 5,
+    "author": {
+      "id": "fernando_punk77@hotmail.com",
+      "nombre": "fer",
+      "apellido": "lair",
+      "edad": "33",
+      "alias": "FerAstrozombie",
+      "avatar": "https://i.pinimg.com/736x/34/26/49/342649651ff0985eb72071d26d34a261.jpg"
+    },
+    "text": "ingreso algo nuevo",
+    "hora": "26/12/2022, 17:40:08"
+  },
+  {
+    "id": 6,
+    "author": {
+      "id": "fernando_punk77@hotmail.com",
+      "nombre": "fer",
+      "apellido": "lair",
+      "edad": "33",
+      "alias": "FerAstrozombie",
+      "avatar": "https://media.revistagq.com/photos/5f10224264f52a842c7f9e8b/master/pass/apps.39852.14455250034361967.824623c3-91b6-402f-9a68-c66bfac9bc20.jpg"
+    },
+    "text": "ya lo cargo",
+    "hora": "26/12/2022, 17:40:33"
+  },
+  {
+    "id": 7,
+    "author": {
+      "id": "fernando_punk77@hotmail.com",
+      "nombre": "fer",
+      "apellido": "lair",
+      "edad": "33",
+      "alias": "FerAstrozombie",
+      "avatar": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+    },
+    "text": "listo",
+    "hora": "26/12/2022, 17:41:10"
+  }
+]
