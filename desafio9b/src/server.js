@@ -1,4 +1,5 @@
 const express = require("express");
+const cluster = require('cluster');
 const faker = require("@faker-js/faker");
 const  Contenedor = require("./products");
 const Chat = require("./chat");
@@ -12,13 +13,11 @@ const chatApi = new Chat("chats.txt")
 const productosApi = new ContenedorSql(optionsDB.mariaDB, "productos");
 /* const chatApi = new ContenedorSql(optionsDB.sqliteDB, "chat"); */
 const parseArgs = require("minimist")
-const options = {default:{
-    PORT:8080
-}}
+const options = {alias:{p: "port", m: "modo"}, default:{MODO: "FORK", port: 8080}};
 const argumentos = parseArgs(process.argv.slice(2),options);
-const PORT = argumentos.PORT;
-const server = app.listen( PORT, ()=>{console.log(`Server listening on port: ${PORT}`);})
-const io = new Server(server);
+const PORT = argumentos.port;
+const MODO = argumentos.modo;
+const os = require("os")
 const handlebars = require("express-handlebars");
 const viewsFolder = path.join(__dirname,"views")
 const { normalize, schema} = require("normalizr");
@@ -37,11 +36,38 @@ const routerProductos = require("./web/routerProductos.js");
 app.use(express.static(__dirname+"/public"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-
 app.engine("handlebars",handlebars.engine());
 app.set("views", viewsFolder);
 app.set("view engine","handlebars");
 app.use(cookieParser());
+
+if(MODO === "CLUSTER" && cluster.isPrimary){
+    const numeroCpus = os.cpus().length;
+    for(let i=0; i<numeroCpus; i++){
+        cluster.fork()
+    }
+    cluster.on("exit",(worker)=>{
+            console.log(`Este subproceso ${worker.process.pid} dejo de funcionar`);
+            cluster.fork();
+        });
+}else{
+    const server = app.listen(PORT, ()=>{console.log(`Server listening on port: ${PORT} on process ${process.pid}`);})
+    const io = new Server(server);
+    io.on("connection", async (socket) => {
+    
+        console.log("Nuevo cliente conectado");
+        socket.emit("products", await productosApi.getAll());
+        socket.emit("mensajesChat", await normalizarMensajes());
+        socket.on("newProduct", async(data) => {
+            await productosApi.save(data);        
+            io.sockets.emit("products", await productosApi.getAll());
+        })
+        socket.on("nuevoMensaje", async (data) => {        
+            await chatApi.save(data);
+            io.sockets.emit("mensajesChat", await normalizarMensajes());
+        })
+    });
+}
 
 mongoose.connect(optionsDB.mongoAtlasSessions.urlDatabaseUsers,{
     useNewUrlParser: true,
@@ -102,21 +128,6 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
     const user = await UserModel.findById(id);
     done(null, user);
-});
-
-io.on("connection", async (socket) => {
-    
-    console.log("Nuevo cliente conectado");
-    socket.emit("products", await productosApi.getAll());
-    socket.emit("mensajesChat", await normalizarMensajes());
-    socket.on("newProduct", async(data) => {
-        await productosApi.save(data);        
-        io.sockets.emit("products", await productosApi.getAll());
-    })
-    socket.on("nuevoMensaje", async (data) => {        
-        await chatApi.save(data);
-        io.sockets.emit("mensajesChat", await normalizarMensajes());
-    })
 });
 
 app.get("/",(req,res) =>{    
@@ -246,7 +257,7 @@ app.get("/info",(req, res) => {
         "Memoria total reservada": process.memoryUsage().rss,
         "Path de ejecucion": process.execPath,
         "Process id": process.pid,
-        "Carpeta del proyecto": process.cwd(),
+        "Numero de procesadores": os.cpus().length
     })
 })
 

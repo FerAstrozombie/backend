@@ -1,0 +1,12 @@
+2023/01/28 08:54:20 [emerg] 21872#17688: unknown directive "upstram" in C:\Users\flair\Desktop\backend\desafio9b\nginx-1.23.3/conf/nginx.conf:34
+2023/01/28 08:55:14 [emerg] 25776#19452: unknown directive "upstram" in C:\Users\flair\Desktop\backend\desafio9b\nginx-1.23.3/conf/nginx.conf:34
+2023/01/28 08:55:21 [emerg] 18180#4308: unknown directive "upstram" in C:\Users\flair\Desktop\backend\desafio9b\nginx-1.23.3/conf/nginx.conf:34
+2023/01/28 09:02:03 [emerg] 24540#10156: invalid parameter "8081" in C:\Users\flair\Desktop\backend\desafio9b\nginx-1.23.3/conf/nginx.conf:35
+2023/01/28 09:05:05 [emerg] 25916#5548: unexpected "}" in C:\Users\flair\Desktop\backend\desafio9b\nginx-1.23.3/conf/nginx.conf:50
+2023/01/28 09:08:37 [error] 24036#20600: *1 upstream timed out (10060: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /api/randoms/100 HTTP/1.1", upstream: "http://127.0.0.1:8081/api/randoms/100", host: "localhost:81"
+2023/01/28 09:14:29 [notice] 11412#3572: signal process started
+2023/01/28 09:17:32 [notice] 22676#20280: signal process started
+2023/01/28 09:17:40 [notice] 9256#26008: signal process started
+2023/01/28 09:17:40 [error] 9256#26008: CreateFile() "C:\Users\flair\Desktop\backend\desafio9b\nginx-1.23.3/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
+2023/01/28 09:18:52 [notice] 952#12020: signal process started
+2023/01/28 09:18:52 [error] 952#12020: CreateFile() "C:\Users\flair\Desktop\backend\desafio9b\nginx-1.23.3/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
