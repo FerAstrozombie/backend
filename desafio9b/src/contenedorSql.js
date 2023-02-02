@@ -1,5 +1,4 @@
 const knex = require("knex");
-
 class ContenedorMysql {
     constructor(options, tableName){
         this.database = knex(options);
