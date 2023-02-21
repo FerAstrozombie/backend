@@ -14,7 +14,9 @@ const envConfig = {
     IDTWILIO: process.env.IDTWILIO,
     TOKENTWILIO: process.env.TOKENTWILIO,
     TWILIOPHONEWHATSAPP: process.env.TWILIOPHONEWHATSAPP,
-    ADMINPHONE: process.env.ADMINPHONE
+    ADMINPHONE: process.env.ADMINPHONE,
+    GMAIL: process.env.GMAIL,
+    TOKENGMAIL: process.env.TOKENGMAIL
 };
 
 export {envConfig};

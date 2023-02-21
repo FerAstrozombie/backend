@@ -1,11 +1,12 @@
 import nodemailer from "nodemailer";
+import { envConfig } from "../envConfig.js";
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
     auth: {
-        user: 'fernandopunk77@gmail.com',
-        pass: 'roqorrextdvszpak'
+        user: envConfig.GMAIL,
+        pass: envConfig.TOKENGMAIL
     }
 });
 

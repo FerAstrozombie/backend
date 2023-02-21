@@ -6,6 +6,7 @@ import { logger } from "../loggers/logger.js";
 import { UserModel } from "../models/users.js";
 import { transporter } from "../messages/email.js";
 import { twilioClient, twilioPhone, adminPhone } from "../messages/whatsaap.js"
+import { envConfig } from "../envConfig.js";
 const carritosApi = ContenedorDaoCarritos;
 const productosApi = ContenedorDaoProductos
 const app = express();
@@ -36,7 +37,7 @@ routerCarrito.post("/compra", async (req, res) => {
                             </div>`
     transporter.sendMail({
         from: "Server app Node",
-        to: "fernandopunk77@gmail.com",
+        to: envConfig.GMAIL,
         subject: `Nuevo pedido de: ${user.nombre} email: ${user.email}`,
         html: emailTemplate           
     });
@@ -127,9 +128,10 @@ routerCarrito.post("/:id/productos", async(req, res) => {
     let producto = await productosApi.getById(idProducto);
     let productoFinal = producto[0]     
     const user = await UserModel.findById(id);
+    let carritoDb = user.carrito
     let carrito = user.carrito[0].productos;
     carrito.push(productoFinal);
-    await UserModel.updateOne(user)
+    await UserModel.updateOne({_id : {$eq:id}}, {carrito: carritoDb});
     res.redirect("/")
 });
 
