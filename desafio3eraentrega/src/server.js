@@ -13,6 +13,8 @@ import { authRouter, isAuthenticated } from "./web/authRouter.js";
 import flash from "connect-flash";
 import cookieParser from "cookie-parser";
 import { UserModel } from "./models/users.js";
+import { logger } from "./loggers/logger.js"
+import multer from "multer";
 const productosApi = ContenedorDaoProductos;
 const optionsDB = options;
 const __filename = fileURLToPath(import.meta.url);
@@ -20,9 +22,10 @@ const __dirname = path.dirname(__filename);
 const viewsFolder = path.join(__dirname,"views");
 const app = express();
 const PORT = 8080;
-const server = app.listen( PORT, ()=>{console.log(`Server listening on port: ${PORT}`);})
+const server = app.listen( PORT, ()=>{logger.info(`Server listening on port: ${PORT}`);})
 
-app.use(express.static(__dirname+"/public"));
+app.use(express.static(__dirname +"/public"));
+app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
@@ -51,16 +54,27 @@ passport.deserializeUser(async (id, done) => {
 app.engine("handlebars",handlebars.engine());
 app.set("views", viewsFolder);
 app.set("view engine","handlebars");
-app.use('/api', routerProductos);
-app.use('/api', routerCarrito);
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, "public/uploads"),
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+})
+app.use(multer({
+    storage: storage,
+    dest: path.join(__dirname, "public/uploads")
+}).single("avatar"));
+app.use("/api",routerCarrito);
+app.use("/api",routerProductos);
 app.use(authRouter)
 
 app.get("/", isAuthenticated, async (req, res) => {
     let id = req.session.passport.user        
-    const user = await UserModel.findById(id);
-    let userEmail = user.email
+    const user = await UserModel.findById(id).lean();
+    let usuario = []
+    usuario.push(user)
     res.render("home",{
-        user: userEmail
+        user: usuario
     })
 })
 

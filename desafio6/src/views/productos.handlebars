@@ -1,0 +1,55 @@
+<div class="padre">
+    <div class="user">
+        {{#if user}}
+            <h2>Bienvenido {{user}}</h2>
+            <button onclick="location.href='/logout'" class="userBtn">Cerrar sesión</button>
+        {{/if}}
+    </div>
+    <h2>Ingrese Producto</h2>
+    <fieldset>
+        <div  class="flexForm">                
+            <img src="/dibujo.svg" alt="">
+            <form id="productForm" action="/api/productos" method="POST">
+                <input id="nombre" type="text" name="nombre" placeholder="Nombre" required />
+                <input id="descripcion" type="text" name="descripcion" placeholder="Descripcion" required />
+                <input id="url" type="url" name="url" placeholder="Thumbnail" required />
+                <input id="precio" type="number" name="precio" placeholder="Precio" required />
+                <input id="stock" type="number" name="stock" placeholder="Stock" required />
+                <button class="botonEnviar" type="submit">Enviar</button>
+            </form>  
+        </div>              
+    </fieldset>
+    <a class="boton" href="/listadeproductos">
+        <button>Ir a productos</button>
+    </a>
+</div>
+{{#if productos}}
+    <div class="padre">
+        <h2>Productos cargados</h2>
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <th class="tituloTabla">Nombre</strong></th>
+                        <th class="tituloTabla">Precio</strong></th>
+                        <th class="tituloTabla">Foto</strong></th>
+                    </tr>
+                    {{#each productos}}
+                        <tr>
+                        <th>{{this.nombre}}</th>
+                        <th>{{this.precio}}</th>
+                        <th>
+                            <img src="{{this.url}}" alt="{{this.nombre}}">
+                        </th>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay productos</h2>       
+    </div>
+{{/if}}
+{{#if compare}}
+    <div id="productsContainer"></div>
+{{/if}}

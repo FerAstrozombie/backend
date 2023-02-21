@@ -1,0 +1,30 @@
+{{#if user}}
+    <div class="padre">
+        <h2>Datos personales</h2>
+            <div class="tabla">
+                {{#each user}}
+                <div class="perfilPadre">
+                    <div class="titulo">
+                        <div class="user">
+                                <h2 class="mail">Bienvenido {{this.nombre}}</h2>
+                                <button onclick="location.href='/logout'" class="userBtn">Cerrar sesión</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="circular">
+                            <img class="avatarFoto" src={{this.avatar}} alt={{this.nombre}}>
+                        </div>
+                        <h3>Email: {{this.email}}</h3>
+                        <h3>Direccion: {{this.direccion}}</h3>
+                        <h3>Edad: {{this.edad}}</h3>
+                        <h3>Telefono: {{this.telefono}}</h3>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay datos</h2>       
+    </div>
+{{/if}}
