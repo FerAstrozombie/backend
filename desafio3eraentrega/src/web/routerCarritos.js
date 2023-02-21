@@ -130,7 +130,7 @@ routerCarrito.post("/:id/productos", async(req, res) => {
     let carrito = user.carrito[0].productos;
     carrito.push(productoFinal);
     await UserModel.updateOne(user)
-    res.send("/")
+    res.redirect("/")
 });
 
 routerCarrito.delete("/:id/carritos/:id_prod",async(req, res) =>{
