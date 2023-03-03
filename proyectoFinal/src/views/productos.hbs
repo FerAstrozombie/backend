@@ -1,0 +1,30 @@
+<div class="titulo">
+    <div class="user">
+        {{#if user}}
+            <h2 class="mail">Bienvenido {{user}}</h2>
+            <button onclick="location.href='/logout'" class="userBtn">Cerrar sesión</button>
+        {{/if}}
+        <button onclick="location.href='/logout'" class="userBtn">Cerrar sesión</button>
+    </div>
+</div>
+{{#if productos}}
+    <div class="padre">
+        <h2>Productos disponibles</h2>
+            <div class="tabla">
+                {{#each productos}}
+                    <div class="card">
+                        <h3>{{this.nombre}}</h3>
+                        <img class="imgCarrito" src="{{this.url}}" alt="{{this.nombre}}">
+                        <h3>Precio: ${{this.precio}}</h3>
+                        <form action="/{{this._id}}/productos" method="post">
+                            <button type="submit" class="userBtn">Agregar al carrito</button>
+                        </form>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay productos</h2>       
+    </div>
+{{/if}}

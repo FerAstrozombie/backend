@@ -1,0 +1,26 @@
+<h2>Usuarios registrados</h2>
+    {{#if users.length}}
+        <div>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Edad</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                </tr>
+                {{#each users}}
+                    <tr>
+                        <td>{{this.nombre}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.edad}}</td>
+                        <td>{{this.direccion}}</td>
+                        <td>{{this.telefono}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+    {{else}}
+        <h4>No se encontraron personas</h4>
+    {{/if}}
+</div>

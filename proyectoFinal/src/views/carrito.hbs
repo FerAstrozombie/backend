@@ -1,0 +1,30 @@
+<div class="carrito">
+    <h2>Carrito de compras</h2>
+    {{#if carrito}}
+    <h4>Carrito de compras con id nro: {{id}}</h4>
+            {{#if productos}}
+                <h4>Productos agregados</h4>
+                <div class="carritoOrden">
+                    {{#each productos}}
+                    <div class="card">
+                        <h3>{{this.nombre}}</h3>
+                        <h4>{{this.descripcion}}</h4>
+                        <img class="imgCarrito" src="{{this.url}}" alt="{{this.nombre}}">
+                        <h3>Precio: ${{this.precio}}</h3>
+                    </div>
+                    {{/each}}
+                </div>
+                <form action="/compra" method="post">
+                    <button type="submit" class="userBtn">Finalizar compra</button>
+                </form>
+                {{else}}
+                    <div class="ordenBotones">
+                        <h2 class="noHay">No hay productos en el carrito</h2>       
+                    </div>
+            {{/if}}
+    {{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay carrito</h2>       
+    </div>
+{{/if}}
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Home</title>
+</head>
+<body>
+    <nav>
+        <ul class="lista">
+            <li>
+                <a href="/user">Usuarios</a>
+            </li>
+            <li>
+                <a href="/productos">Productos</a>
+            </li>
+            <li>
+                <a href="/Carrito">Carrito</a>
+            </li>
+        </ul>
+    </nav>
+    {{#if mensajeRegistro}}
+        <div>
+            <p>{{mensajeRegistro}}</p>
+        </div>
+    {{/if}}
+
+    {{{body}}}
+
+    <footer>
+        <div class="flexPadre">
+            <h5 class='copyrigth'>© Pagina realizada por FerAstrozombie ©</h5>
+            <div class='flexParrafo'>
+                <img class='tamañoLogo' src="../../facebook.svg" alt="logo facebook" />
+                <p>Facebook</p>
+            </div>
+            <div class='flexParrafo'>
+                <img class='tamañoLogo' src="../../instagram.svg" alt="logo instagram" />
+                <p>Instagram</p>
+            </div>
+            <div class='flexParrafo'>
+                <img class='tamañoLogo' src="../../mail.svg" alt="logo mail" />
+                <p>Mail</p>
+            </div>
+        </div>
+</footer>
+
+    {{> importsScripts }}
+</body>
+</html>
