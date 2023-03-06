@@ -4,8 +4,7 @@ class ProductController{
     static async getProducts (req, res){
         try {
             const response = await ProductSevice.getProducts();
-            res.status(200).json({
-                status: "SUCESS",
+            res.render("productos",{
                 productos: response
             })
         } catch (error) {
@@ -18,24 +17,34 @@ class ProductController{
 
     static async saveProduct (req, res){
         try {
-            const response = await ProductSevice.saveProduct(req.body);
-            res.status(200).json({
-                status: "SUCESS",
-                productos: response
-            })
+            await ProductSevice.saveProduct(req.body);
+            res.redirect("/productos");
         } catch (error) {
             res.status(400).json({
                 status: "ERROR",
                 message:`Hubo un error ${error}`
             })
         }
-    }
+    };
 
     static async getById (req, res){
         try {
             const response = await ProductSevice.getById(req.params.id);
-            res.status(200).json({
-                status: "SUCESS",
+            res.render("detalle", {
+                producto: response
+            })
+        } catch (error) {
+            res.status(400).json({
+                status: "ERROR",
+                message:`Hubo un error ${error}`
+            })
+        }
+    };
+
+    static async getLista (req, res){
+        try {
+            const response = await ProductSevice.getProducts();
+            res.render("listadeproductos",{
                 productos: response
             })
         } catch (error) {
@@ -44,7 +53,7 @@ class ProductController{
                 message:`Hubo un error ${error}`
             })
         }
-    }
+    };
 }
 
 export { ProductController }

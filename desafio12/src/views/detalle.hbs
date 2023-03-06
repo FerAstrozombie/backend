@@ -1,0 +1,17 @@
+{{#if producto}}
+    <div class="padre">
+        <h2>Detalle del producto</h2>
+            <div class="tabla">
+                    <div class="card">
+                        <h3>{{producto.nombre}}</h3>
+                        <img class="imgCarrito" src="{{producto.url}}" alt="{{producto.nombre}}">
+                        <h3>Precio: ${{producto.precio}}</h3>
+                        <h3>Stock disponible: {{producto.stock}}</h3>
+                    </div>
+            </div>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay productos</h2>       
+    </div>
+{{/if}}

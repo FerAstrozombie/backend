@@ -1,9 +1,10 @@
 class ProductDto{
-    constructor({_id, nombre, precio, stock}){
-        this.id = _id,
+    constructor({_id,nombre, precio, stock, url}){
         this.nombre = nombre,
         this.precio = precio,
-        this.stock = stock
+        this.stock = stock,
+        this.url = url,
+        this.id = _id
     }
 }
 

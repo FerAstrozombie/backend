@@ -15,6 +15,10 @@ export async function getApiDao(dbType){
             await myClient.connect(options.mongo.url);
             ProductManager = new ProductMongoDao(ProductModel);
         break;
+        case "firebase":
+            const { ProductFirebaseDao } = await import("./daos/products/productFirebaseDao.js");
+            ProductManager = new ProductFirebaseDao(options.firebase, "ecommercebackend-44699");
+            break;
         default:
             break;
     }

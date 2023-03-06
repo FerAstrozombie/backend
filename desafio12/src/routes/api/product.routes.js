@@ -3,8 +3,9 @@ import { ProductController } from "../../controllers/product.controller.js"
 
 const router = express.Router();
 
-router.get("/", ProductController.getProducts)
+router.get("/productos", ProductController.getProducts)
 router.post("/", ProductController.saveProduct);
-router.get("/:id", ProductController.getById);
+router.get("/productos/:id", ProductController.getById)
+router.get("/listadeproductos", ProductController.getLista)
 
 export {router as productRouter}

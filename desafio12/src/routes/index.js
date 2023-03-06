@@ -7,6 +7,6 @@ router.get("/", (req, res) => {
     res.send("bienvenido")
 })
 
-router.use("/productos", productRouter)
+router.use(productRouter)
 
 export {router}
