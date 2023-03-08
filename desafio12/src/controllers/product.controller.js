@@ -4,8 +4,10 @@ class ProductController{
     static async getProducts (req, res){
         try {
             const response = await ProductSevice.getProducts();
+            const user = req.user.nombre;
             res.render("productos",{
-                productos: response
+                productos: response,
+                user: user
             })
         } catch (error) {
             res.status(400).json({

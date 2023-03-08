@@ -21,7 +21,8 @@ export const options = {
         PORT: objArgs.port,
         MODE: objArgs.modo,
         NODE_ENV: objArgs.env,
-        DV_TYPE: process.env.DV_TYPE || "mongo"
+        DV_TYPE: process.env.DV_TYPE || "mongo",
+        SECRET_SESSION: process.env.SECRET_SESSION
     },
     mongo:{
         url: process.env.MONGO_URL
