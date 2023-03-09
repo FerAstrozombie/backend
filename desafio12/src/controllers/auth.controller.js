@@ -1,5 +1,6 @@
 import passport from "passport";
 import { authPassport } from "../auth/passport.js";
+import { convertUserToDto } from "../model/dtos/user.dto.js";
 
 authPassport(passport);
 
@@ -47,14 +48,9 @@ class AuthController{
     }
 
     static getPerfil(req, res) {
-        const user = {
-            "nombre": req.user.nombre,
-            "apellido": req.user.apellido,
-            "dni": req.user.dni,
-            "email": req.user.email,
-        }
+        const userDto = convertUserToDto(req.user)
         res.render("home",{
-            user: user
+            user: userDto
         })
     }
 }

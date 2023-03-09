@@ -26,12 +26,14 @@ const authPassport = (passport)=>{
             try {
                 const user = await UserModel.findOne({email:username});
                 if(user) return done(null, false, {message:"El usuario ya esta registrado"});
+                let urlImg = `http://localhost:8080/public/uploads/${req.file.originalname}`
                 const newUser = {
                     email:username,
                     password:createHash(password),
                     nombre:req.body.nombre,
                     apellido:req.body.apellido,
                     dni: req.body.dni,
+                    avatar: urlImg                    
                 };
                 const userCreated = await UserModel.create(newUser);
                 return done(null, userCreated,{message:"Usuario registrado exitosamente"});

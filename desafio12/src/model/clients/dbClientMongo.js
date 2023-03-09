@@ -1,4 +1,5 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+import { logger } from "../../loggers/logger.js"
 
 class MyMongoClient{
     constructor(){
@@ -8,7 +9,7 @@ class MyMongoClient{
     async connect(url){
         try {
             await this.client.connect(url);
-            console.log("Base de datos conectada");
+            logger.info("Base de datos conectada");
         } catch (error) {
             throw new Error(`Error al conectarse a la base de datos ${error}`)
         }

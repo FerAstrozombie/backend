@@ -5,7 +5,7 @@ import { checkUserLoggued } from "../../middlewares/auth.middleware.js"
 const router = express.Router();
 
 router.get("/productos", checkUserLoggued, ProductController.getProducts)
-router.post("/", checkUserLoggued, ProductController.saveProduct);
+router.post("/productos", checkUserLoggued, ProductController.saveProduct);
 router.get("/productos/:id", checkUserLoggued, ProductController.getById)
 router.get("/listadeproductos", checkUserLoggued, ProductController.getLista)
 

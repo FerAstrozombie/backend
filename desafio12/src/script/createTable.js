@@ -1,5 +1,6 @@
 import { options } from "../config/config.js"
 import knex from "knex";
+import { logger } from "../loggers/logger.js"
 
 const databaseMariadb = knex(options.mariaDB);
 
@@ -17,9 +18,9 @@ const creteTables = async () =>{
             table.integer("precio").nullable(false);
             table.integer("stock").nullable(false);
         });
-        console.log("tabla de productos creada");
+        logger.info("tabla de productos creada");
     } catch (error) {
-        console.log(error);
+        logger.error(error);
     }
     databaseMariadb.destroy();
 }

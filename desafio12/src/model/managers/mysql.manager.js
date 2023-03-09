@@ -1,4 +1,5 @@
 import knex from "knex";
+import { logger } from "../../loggers/logger.js"
 
 class ContenedorMysql {
     constructor(options, tableName){
@@ -39,7 +40,7 @@ class ContenedorMysql {
             await this.database.from(this.table).where("id",id).del();
             return `product with id:${id} deleted`;
         } catch (error) {
-            console.log(error)
+            logger.error(error)
         }
     }
     
@@ -54,7 +55,7 @@ class ContenedorMysql {
             })
             return productos;
         } catch (error) {
-            console.log(error)
+            logger.error(error)
         }
 
     }

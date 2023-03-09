@@ -19,7 +19,7 @@ class ProductController{
 
     static async saveProduct (req, res){
         try {
-            await ProductSevice.saveProduct(req.body);
+await ProductSevice.saveProduct(req.body);       
             res.redirect("/productos");
         } catch (error) {
             res.status(400).json({
