@@ -48,3 +48,5 @@ app.use(router);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT,()=>logger.info(`Server listening on port ${PORT}`));
+
+export {app};

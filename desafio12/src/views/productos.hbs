@@ -9,7 +9,7 @@
 {{#if productos}}
     <div class="padre">
         <h2>Productos disponibles</h2>
-            <div class="tabla">
+            <div class="productos">
                 {{#each productos}}
                     <div class="card">
                         <h3>{{this.nombre}}</h3>
@@ -35,11 +35,11 @@
         <div  class="flexForm">                
             <img src="/dibujo.svg" alt="">
             <form id="productForm" action="/productos" method="POST">
-                <input id="nombre" type="text" name="nombre" placeholder="Nombre" required />
-                <input id="descripcion" type="text" name="descripcion" placeholder="Descripcion" required />
-                <input id="url" type="url" name="url" placeholder="Thumbnail" required />
-                <input id="precio" type="number" name="precio" placeholder="Precio" required />
-                <input id="stock" type="number" name="stock" placeholder="Stock" required />
+                <input class="contraseña" id="nombre" type="text" name="nombre" placeholder="Nombre" required />
+                <input class="contraseña" id="descripcion" type="text" name="descripcion" placeholder="Descripcion" required />
+                <input class="contraseña" id="url" type="url" name="url" placeholder="Thumbnail" required />
+                <input class="contraseña" id="precio" type="number" name="precio" placeholder="Precio" required />
+                <input class="contraseña" id="stock" type="number" name="stock" placeholder="Stock" required />
                 <button class="botonEnviar" type="submit">Enviar</button>
             </form>  
         </div>              

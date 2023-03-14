@@ -3,6 +3,12 @@ body{
     padding: 0;
     margin: 0;
     margin-top: 0;
+    background-color: #1F2023;
+}
+
+h2, h3 {
+    color: white;
+    text-transform: capitalize;
 }
 .lista{
     list-style: none;
@@ -16,7 +22,7 @@ body{
 }
 a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 li{
     margin-right: 40px;
@@ -33,9 +39,8 @@ fieldset{
     width: 300px;
     height: 600px;
     border-radius: 20px;
-    -webkit-box-shadow: 17px 11px 5px 0px rgba(0,0,0,0.37);
-    -moz-box-shadow: 17px 11px 5px 0px rgba(0,0,0,0.37);
     box-shadow: 17px 11px 5px 0px rgba(0,0,0,0.37);
+    border: 1px solid #1cb3e6;
 }
 .flexForm{
     margin-top: 20px;
@@ -55,15 +60,16 @@ img {
 }
 input{
     font-family: Space mono;
-    margin: 20px;
     border: none;
     border-bottom: 1px solid #1cb3e6;
     outline: none;
+    background-color: #1F2023;
+    color: white;
 }
 input[type="number"]
 {
     appearance: textfield ;
-    margin: 0;
+    margin: 20px;
     -moz-appearance:textfield ;
 }
 button{
@@ -73,6 +79,7 @@ button{
     background-color: #1cb3e6;
     border: none;
     border-radius: 20px;
+    color: white;
 }
 button:hover{
     transform: scale(1.1);
@@ -85,6 +92,7 @@ button:hover{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background-color: white;
 }
 table, th, td {
     border: 1px solid black;
@@ -96,6 +104,7 @@ th, td {
 table{
     border-radius: 20px;
 }
+
 .noHay{
     margin-top: 30px;
     text-align: center;
@@ -111,6 +120,7 @@ footer{
     margin-top: 30px;
     width: 100%;
     background-color: #1cb3e6;
+    color: white;
 }
 .tamañoLogo {
     width: 30px;
@@ -214,8 +224,9 @@ h3, p {
     justify-content: center;
     align-items: center;
 }
-#contraseña{
+.contraseña{
     width: 200px;
+    margin: 20px;
     margin: 20px;
 }
 
@@ -275,6 +286,7 @@ h3, p {
 
 .mail{
     padding-right: 30px;
+    color: white;
 }
 
 .carrito{
@@ -288,6 +300,7 @@ h3, p {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #1F2023;
 }
 
 .circular{
@@ -326,4 +339,44 @@ h3, p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.productos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.detalle {
+    background-color: #1F2023;
+}
+
+.file-select {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.file-select::before {
+    background-color: #1cb3e6;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    content: 'Selecciona imagen';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.examinar {
+    opacity: 0;
+    width: 200px;
+    height: 30px;
+    display: inline-block;
 }

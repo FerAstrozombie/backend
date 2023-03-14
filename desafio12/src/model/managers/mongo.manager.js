@@ -28,7 +28,8 @@ class MongoContainer{
     async save(object){
         try {
             const data = await this.model.create(object);
-            return `new document saved with id: ${data._id}`
+            /* return `new document saved with id: ${data._id}` */
+            return data
         } catch (error) {
             return {message:`Error al guardar: ${error}`};
         }

@@ -12,7 +12,7 @@ const objArgs = ParseArgs(process.argv.slice(2),{
     default:{
         port: 8080,
         modo: "FORK",
-        env: "DEV"
+        env: "TEST",
     }
 });
 
@@ -25,7 +25,7 @@ export const options = {
         SECRET_SESSION: process.env.SECRET_SESSION
     },
     mongo:{
-        url: process.env.MONGO_URL
+        url: objArgs.env === "TEST" ? process.env.MONGO_URL_test : process.env.MONGO_URL
     },
     mariaDB: {
         client:"mysql",
