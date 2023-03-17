@@ -1,0 +1,33 @@
+# como se debe recibir la informacion de un usuario para metodo post
+components:
+  requestBodies:
+    NewProduct:
+      type: object
+      required:
+        - nombre
+        - descripcion
+        - url
+        - precio
+        - stock
+      properties:
+        nombre:
+          type: string
+          description: "Nombre del producto"
+        descripcion:
+          type: string
+          description: "Breve descripcion del producto"
+        url:
+          type: string
+          description: "Url de la imagen del producto"
+        precio:
+          type: number
+          descripcion: "Precio del producto"
+        stock:
+          type: number
+          descripcion: "Stock disponible del producto"
+      example:
+        nombre: Gorra Pikachu
+        descripcion: Una gorra del pokemon mas popular
+        utl: https://d3ugyf2ht6aenh.cloudfront.net/stores/405/662/products/gorra-pikachu-blanca-y-negra1-f46fef758ddc9dc90616166933804303-480-0.webp
+        precio: 1240
+        stock: 24

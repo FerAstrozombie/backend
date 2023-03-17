@@ -1,0 +1,16 @@
+# get all products
+paths:
+  /productos:
+    get:
+      summary: request to get all products from db
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: get all products successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'

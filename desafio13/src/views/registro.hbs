@@ -1,0 +1,15 @@
+<h2 class="log">Registro de Usuario</h2>
+<div class="login">
+    <form class="formLogin" action="/registro" method="post" enctype="multipart/form-data">
+        <input class="contraseña" type="text" name="nombre" placeholder="Ingrese su nombre" required>
+        <input class="contraseña" type="text" name="apellido" placeholder="Ingrese su apellido" required>
+        <input class="contraseña" type="number" name="dni" placeholder="Ingrese su dni" required>
+        <input class="contraseña" type="email" name="email" placeholder="Ingrese email" required>
+        <input class="contraseña" type="password" name="password" placeholder="Ingrese una contraseña" required>
+        <div class="file-select">
+            <input class="examinar" type="file" name= "avatar" accept="image/*">
+        </div>        
+        <button type="submit">Registrarse</button>
+    </form>
+    <a class="links" href="/login">Ya tienes una cuenta?, Inicia sesión</a>
+</div>

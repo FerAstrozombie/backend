@@ -11,6 +11,7 @@ import { logger } from "./loggers/logger.js";
 import multer from "multer";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpecs } from "./config/docConfig.js";
+import { graphqlController } from "./controllers/product.graphql.controller.js"
 
 const app = express();
 app.use('/public', express.static(__dirname + '/src/public'));
@@ -46,6 +47,8 @@ app.use(multer({
 }).single("avatar"));
 
 app.use(router);
+
+app.use("/graphql", graphqlController());
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT,()=>logger.info(`Server listening on port ${PORT}`));
