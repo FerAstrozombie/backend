@@ -1,36 +1,23 @@
 {{#if productos}}
     <div class="padre">
-        <h2>Productos cargados</h2>
-            <div class="tabla">
-                <table>
-                    <tr>
-                        <th class="tituloTabla">Nombre</strong></th>
-                        <th class="tituloTabla">Precio</strong></th>
-                        <th class="tituloTabla">Foto</strong></th>
-                    </tr>
-                    {{#each productos}}
-                        <tr>
-                        <th>{{this.nombre}}</th>
-                        <th>{{this.precio}}</th>
-                        <th>
-                            <a href="/productos/{{this.id}}">
-                                <img src="{{this.url}}" alt="{{this.nombre}}">
-                            </a>
-                            
-                        </th>
-                    </tr>
-                    {{/each}}
-                </table>
+        <h2>Productos disponibles</h2>
+            <div class="productos">
+                {{#each productos}}
+                    <div class="card">
+                        <h3>{{this.nombre}}</h3>
+                        <a href="/productos/{{this.id}}">
+                            <img class="imgCarrito" src="{{this.url}}" alt="{{this.nombre}}">
+                        </a>
+                        <h3>Precio: ${{this.precio}}</h3>
+                        <form action="/api/{{this.id}}/productos" method="post">
+                            <button type="submit" class="userBtn">Agregar al carrito</button>
+                        </form>
+                    </div>
+                {{/each}}
             </div>
-        <a class="boton" href="/productos">
-            <button>Seguir cargando</button>
-        </a>
         </div>
 {{else}}
     <div class="ordenBotones">
-        <h2 class="noHay">No hay productos</h2>
-        <a class="boton" href="/productos">
-            <button>Seguir cargando</button>
-        </a>        
+        <h2 class="noHay">No hay productos</h2>       
     </div>
 {{/if}}

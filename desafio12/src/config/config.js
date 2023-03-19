@@ -1,5 +1,7 @@
 import dotenv from "dotenv";
 import ParseArgs from "minimist";
+import path from "path";
+import __dirname  from "../../utils.js"
 
 dotenv.config();
 
@@ -47,5 +49,12 @@ export const options = {
         "token_uri": "https://oauth2.googleapis.com/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
         "client_x509_cert_url": process.env.CLIENT_X509_CERT_URL
-    }
+    },
+    sqliteDB:{
+        client:"sqlite",
+        connection:{
+            filename:path.join(__dirname + "/src/DB/chatdb.sqlite")
+        },
+        useNullAsDefault:true
+    },
 }

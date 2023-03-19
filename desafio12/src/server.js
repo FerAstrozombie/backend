@@ -11,8 +11,13 @@ import { logger } from "./loggers/logger.js";
 import multer from "multer";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpecs } from "./config/docConfig.js";
+import { Server } from "socket.io";
+import { ContenedorMysql } from "./model/managers/mysql.manager.js";
+import { ProductSevice } from "./services/product.service.js";
 
 const app = express();
+const chatApi = new ContenedorMysql(options.sqliteDB, "chat")
+
 app.use('/public', express.static(__dirname + '/src/public'));
 app.use(express.static(path.join(__dirname, '/src/public')))
 app.use(express.json());
@@ -48,8 +53,22 @@ app.use(multer({
 app.use(router);
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT,()=>logger.info(`Server listening on port ${PORT}`));
+const server = app.listen(PORT,()=>logger.info(`Server listening on port ${PORT}`));
+const io = new Server(server);
+
+io.on("connection", async (socket) => {
+    logger.info("Nuevo cliente conectado");
+    socket.emit("mensajesChat", await chatApi.getAll());
+    socket.emit("products", await ProductSevice.getProducts());
+    socket.on("newProduct", async (data) => {
+        await ProductSevice.saveProduct(data);    
+        io.sockets.emit("products", await ProductSevice.getProducts());
+    })
+    socket.on("nuevoMensaje", async (data) => {        
+        await chatApi.save(data);
+        io.sockets.emit("mensajesChat", await chatApi.getAll());
+    })
+});
 
 app.use("/docs",swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
-
 export {app};
