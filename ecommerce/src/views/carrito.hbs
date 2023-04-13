@@ -1,0 +1,38 @@
+<div class="carrito">
+    <h2>Carrito de compras</h2>
+    {{#if carrito}}
+    <h4>Carrito de compras con id nro: {{idCarrito}}</h4>
+            {{#if productos}}
+                <h4>Productos agregados</h4>
+                <form action="/carrito/{{idCarrito}}" method="post">
+                    <button class="botonEnviar" type="submit">Eliminar productos</button>
+                </form>
+                <div class="carritoOrden">                
+                    {{#each productos}}
+                    <div class="card">
+                        <h3>{{this.nombre}}</h3>
+                        <h4>{{this.descripcion}}</h4>
+                        <img class="imgCarrito" src="{{this.url}}" alt="{{this.nombre}}">
+                        <h3>Precio: ${{this.precio}}</h3>
+                        <h3>Cantidad en carrito: {{this.cantidad}}</h3>
+                        <form action="/eliminar/{{this.id}}" method="post">
+                            <button class="botonEnviar" type="submit">Eliminar producto</button>
+                        </form>
+                    </div>                    
+                    {{/each}}                    
+                </div>
+                <h3>Total: ${{total}}</h3>
+                <form action="/carrito/compra" method="post">
+                    <button type="submit" class="userBtn">Finalizar compra</button>
+                </form>
+                {{else}}
+                    <div class="ordenBotones">
+                        <h2 class="noHay">No hay productos en el carrito</h2>       
+                    </div>
+            {{/if}}
+    {{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay carrito</h2>       
+    </div>
+    {{/if}}
+</div>

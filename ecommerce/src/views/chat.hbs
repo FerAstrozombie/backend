@@ -1,0 +1,29 @@
+{{#if user}}
+<div class="madre">
+    <div class="hijoUno">
+        <h4 class="mail">Bienvenido {{user.nombre}}</h4>
+        <button onclick="location.href='/logout'" id="userBtn">
+            <img class="logoutBtn" src="/cambiar.png" alt="">
+        </button>
+    </div>
+    <div id="hijoDos">
+        <div id="chatContainer"></div>
+        <form id="chatForm">
+        <h4 id="userDate" class="mail">{{user.email}}</h4>
+        <div class="acomodoChat">
+            <div>
+                <input type="text" id="mensajeChat" placeholder="Ingrese mensaje" required />
+            </div>
+            <div>
+                <button id="botonChat" type="submit">&rarr;</button>
+            </div>
+        </div>      
+    </form>
+    </div>
+</div>
+{{/if}}
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+<script src="socket.io/socket.io.js"></script>
+<script src="main.js"></script>

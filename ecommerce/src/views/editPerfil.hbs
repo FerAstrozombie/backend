@@ -1,0 +1,31 @@
+{{#if user}}
+    <div class="padre">
+        <h2>Datos personales</h2>
+            <div class="tabla">
+                <div class="perfilPadre">
+                    <div class="titulo">
+                    </div>
+                    <form action="/edit" method="POST">
+                        <div class="cardDetail">
+                        <div class="circularDos">
+                            <img class="avatarFoto" src={{user.avatar}} alt={{user.nombre}}>
+                        </div>
+                        <h3>Nombre: {{user.nombre}}</h3>
+                        <input class="contraseña" type="text" name="nombre" placeholder="Ingrese su nombre" required>
+                        <h3>Apellido: {{user.apellido}}</h3>
+                        <input class="contraseña" type="text" name="apellido" placeholder="Ingrese su apellido" required>
+                        <h3>Email: {{user.email}}</h3>
+                        <input class="contraseña" type="email" name="email" placeholder="Ingrese email" required>
+                        <h3>Dni: {{user.dni}}</h3>
+                        <input class="contraseña" type="number" name="dni" placeholder="Ingrese su dni" required>
+                    </div>
+                    <button class="botonEnviar" type="submit">Editar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay datos</h2>       
+    </div>
+{{/if}}

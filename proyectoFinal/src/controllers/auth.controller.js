@@ -1,5 +1,3 @@
-
-
 class AuthController{
 
     static async getRegistro (req, res) {

@@ -1,6 +1,9 @@
 import { logger } from "../logger/logger.js";
 import { UserModel } from "../models/dbModels/user.model.js";
 import { ProductService } from "../services/product.service.js";
+import { transporter } from "../messages/email.js";
+import { twilioClient, twilioPhone, adminPhone } from "../messages/whatsaap.js";
+import { options } from "../config/config.js";
 
 class cartController{
     static async getCarrito (req, res) {
@@ -29,6 +32,29 @@ class cartController{
     };
 
     static async getBuy (req, res) {
+        let id = req.session.passport.user        
+        const user = await UserModel.findById(id);
+        let productos = JSON.stringify(user.carrito[0]);
+        const emailTemplate = `<div>
+                                    <h1>Nuevo pediro realizado</h1>
+                                    <h3>Carrito generado</h3>
+                                    ${productos}
+                                </div>`
+        transporter.sendMail({
+            from: "Server app Node",
+            to: options.nodemailer.user,
+            subject: `Nuevo pedido de: ${user.nombre} email: ${user.email}`,
+            html: emailTemplate           
+        });
+        try {
+            await twilioClient.messages.create({
+            from: twilioPhone,
+            to: adminPhone,
+            body: `Nuevo pedido de: ${user.nombre} email: ${user.email}`,
+        })
+        } catch (error) {
+            logger.error(error);
+        }
         res.render("compra")
     }
 }

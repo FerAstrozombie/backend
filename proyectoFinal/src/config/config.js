@@ -30,5 +30,17 @@ export const options = {
         store: MongoStore.create({
             mongoUrl: process.env.MONGO_URL
         }),
+    },
+    twilio:{
+        idTwilio: process.env.IDTWILIO,
+        tokenTwilio: process.env.TOKENTWILIO,
+        twilioPhone: process.env.TWILIOPHONEWHATSAPP,
+        adminPhone: process.env.ADMINPHONE
+    },
+    nodemailer:{
+        host: process.env.HOSTNODEMAILER,
+        port: process.env.PORTNODEMAILER,
+        user: process.env.GMAIL,
+        token: process.env.TOKENGMAIL
     }
 };

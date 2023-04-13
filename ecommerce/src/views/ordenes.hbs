@@ -1,0 +1,27 @@
+{{#if ordenes}}
+    <div class="padre">
+        <h2>Ordenes Generadas</h2>
+            <div class="ordenes">
+                {{#each ordenes}}
+                    <h3>Orden nro: {{this._id}}</h3>
+                    <h4>Orden creada: {{this.createdAt}}</h4>
+                    <h3>Productos en la orden</h3>
+                    <div class="carritoOrden">           
+                    {{#each this.productos}}
+                    <div class="card">
+                        <h3>{{this.nombre}}</h3>
+                        <h4>{{this.descripcion}}</h4>
+                        <img class="imgCarrito" src="{{this.url}}" alt="{{this.nombre}}">
+                        <h3>Precio: ${{this.precio}}</h3>
+                        <h3>Cantidad: {{this.cantidad}}</h3>
+                    </div>                    
+                    {{/each}}                    
+                </div>
+                {{/each}}
+            </div>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay ordenes</h2>       
+    </div>
+{{/if}}

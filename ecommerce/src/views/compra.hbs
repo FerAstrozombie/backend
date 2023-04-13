@@ -1,0 +1,20 @@
+<div>
+    {{#if user}}
+    <h3>Gracias por tu compra {{user.nombre}}</h4>
+    {{/if}}
+    <h4 class="centrado">Nuestro staff ya tiene todos tus datos y en breve se contactaran contigo</h4>
+    <h4 class="centrado">Detalle de su orden</h4>
+    {{#if productos}}
+        <div class="productos">
+                {{#each productos}}
+                    <div class="card">
+                        <h3>Id del producto: {{this.id}}</h3>
+                        <h3>{{this.nombre}}</h3>
+                        <img class="imgCarrito" src="{{this.url}}" alt="{{this.nombre}}">
+                        <h3>Precio: ${{this.precio}}</h3>
+                        <h3>Cantidad: {{this.cantidad}}</h3>
+                    </div>
+                {{/each}}
+            </div>
+    {{/if}}
+</div>

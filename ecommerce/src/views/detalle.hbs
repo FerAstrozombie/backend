@@ -1,0 +1,25 @@
+{{#if producto}}
+    <div class="padre">
+        <h2>Detalle del producto</h2>
+            <div class="detalle">
+                    <div class="cardDetail">
+                        <form action="/detalle/{{producto.id}}" method="post">
+                            <h3>{{producto.nombre}}</h3>                            
+                            <img class="imgCarrito" src="{{producto.url}}" alt="{{producto.nombre}}">
+                            <h3>Precio: ${{producto.precio}}</h3>
+                            <h3>Stock disponible: {{producto.stock}}</h3>
+                            <h3>Editar producto</h3>
+                            <input class="contraseña" id="nombre" type="text" name="nombre" placeholder="Nuevo nombre" required />
+                            <input class="contraseña" id="url" type="url" name="url" placeholder="Nueva url de la imagen" required />
+                            <input class="contraseña" id="precio" type="number" name="precio" placeholder="Nuevo precio" required />
+                            <input class="contraseña" id="stock" type="number" name="stock" placeholder="Nuevo stock" required />                     
+                            <button class="botonEnviar" type="submit">Editar producto</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+{{else}}
+    <div class="ordenBotones">
+        <h2 class="noHay">No hay productos</h2>       
+    </div>
+{{/if}}

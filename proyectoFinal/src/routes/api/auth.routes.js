@@ -4,6 +4,8 @@ import passport from "passport";
 import { UserModel } from "../../models/dbModels/user.model.js";
 import { AuthController } from "../../controllers/auth.controller.js";
 import { CartManager } from "../../models/index.js";
+import { transporter } from "../../messages/email.js";
+import { options } from "../../config/config.js"
 const router = express.Router();
 
 passport.use("signupStrategy", new LocalStrategy(
@@ -30,6 +32,13 @@ passport.use("signupStrategy", new LocalStrategy(
             newUser.telefono = req.body.telefono;
             newUser.carrito = carritoCreado;
             await newUser.save();
+            let user = JSON.stringify(newUser)
+            transporter.sendMail({
+                from: "Server app Node",
+                to: options.nodemailer.user,
+                subject: "Nuevo registro",
+                text: user           
+            });
             done(null, newUser);
         }
     }
